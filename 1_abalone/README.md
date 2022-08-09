@@ -11,5 +11,5 @@ pip install virtualenv
 Create a new environment
 
 ```
-virtualenv -p python3 abalone-env
+virtualenv -p python3 env
 ```
