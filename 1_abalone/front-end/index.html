@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<aside class="aside">
-			<form class="aside__form">
+			<form class="aside__form" id="client-form">
 				<div class="form__group">
 					<h3>Plot selection:</h3>
 					<label class="form__label--block" for="plot">Plot: </label>
@@ -67,6 +67,8 @@
 						<input type="checkbox" name="rings" id="rings" />
 					</div>
 				</div>
+
+				<p class="form__error" id="error"></p>
 
 				<button class="btn btn--primary btn--block" type="submit">Submit</button>
 			</form>
