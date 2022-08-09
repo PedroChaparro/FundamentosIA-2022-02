@@ -78,10 +78,25 @@ def generateBoxPlotFromColumn(column):
 
 def generateNormPlotFromColumn(column):
     if column.upper() in column:
+        # Normal probability plot
+        normal_prob_figure = plot.figure()
 
-        print("Hi")
+        ax = normal_prob_figure.add_subplot(111)  # One data type
+
+        stats.probplot(
+            data_frame[column.upper()],
+            dist=stats.norm,
+            sparams=(6, 1),  # Media de 6, desviación estándar de 1
+            plot=ax,
+        )
+
+        plot.savefig("./cache/last_generated.jpg")
+
+        # Encode
+        encoded_string = encode_last_generated_to_base64()
+        return encoded_string
     else:
-        print("Bye")
+        return "Column does not exists"
 
 
 def generateScatterPlotFromColumns(column1, column2):
