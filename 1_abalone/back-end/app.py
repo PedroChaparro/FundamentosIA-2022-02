@@ -8,10 +8,25 @@ app = Flask(__name__)
 def histograms():
     # Get json data
     request_data = request.json
+    return_dict = {}
 
-    base64_plot = abalone_controllers.generateHistogramFromColum(request_data["column"])
+    if "column" in request_data:
+        base64_plot = abalone_controllers.generateHistogramFromColum(
+            request_data["column"]
+        )
 
-    return_dict = {"image": "{}".format(base64_plot)}
+        return_dict = {
+            "image": "{}".format(base64_plot),
+            "error": False,
+            "message": "Base64 image was sucessfully created",
+        }
+
+    else:
+        return_dict = {
+            "image": "",
+            "error": True,
+            "message": "column key was not provided on JSON payload",
+        }
 
     # Parse to json format
     return jsonify(return_dict)
@@ -21,12 +36,27 @@ def histograms():
 def box_plots():
     # Get json data
     request_data = request.json
+    return_dict = {}
+
+    if "column" in request_data:
+        base64_plot = abalone_controllers.generateBoxPlotFromColumn(
+            request_data["column"]
+        )
+
+        return_dict = {
+            "image": "{}".format(base64_plot),
+            "error": False,
+            "message": "Base64 image was sucessfully created",
+        }
+
+    else:
+        return_dict = {
+            "image": "",
+            "error": True,
+            "message": "column key was not provided on JSON payload",
+        }
 
     # Parse to json format
-    base64_plot = abalone_controllers.generateBoxPlotFromColumn(request_data["column"])
-
-    return_dict = {"image": "{}".format(base64_plot)}
-
     return jsonify(return_dict)
 
 
@@ -34,12 +64,27 @@ def box_plots():
 def norm_plots():
     # Get json data
     request_data = request.json
+    return_dict = {}
+
+    if "column" in request_data:
+        base64_plot = abalone_controllers.generateNormPlotFromColumn(
+            request_data["column"]
+        )
+
+        return_dict = {
+            "image": "{}".format(base64_plot),
+            "error": False,
+            "message": "Base64 image was sucessfully created",
+        }
+
+    else:
+        return_dict = {
+            "image": "",
+            "error": True,
+            "message": "column key was not provided on JSON payload",
+        }
 
     # Parse to json format
-    base64_plot = abalone_controllers.generateNormPlotFromColumn(request_data["column"])
-
-    return_dict = {"image": "{}".format(base64_plot)}
-
     return jsonify(return_dict)
 
 
@@ -47,14 +92,27 @@ def norm_plots():
 def scatter_plots():
     # Get json data
     request_data = request.json
+    return_dict = {}
+
+    if "column1" in request_data and "column2" in request_data:
+        base64_plot = abalone_controllers.generateScatterPlotFromColumns(
+            request_data["column1"], request_data["column2"]
+        )
+
+        return_dict = {
+            "image": "{}".format(base64_plot),
+            "error": False,
+            "message": "Base64 image was sucessfully created",
+        }
+
+    else:
+        return_dict = {
+            "image": "",
+            "error": True,
+            "message": "column key was not provided on JSON payload",
+        }
 
     # Parse to json format
-    base64_plot = abalone_controllers.generateScatterPlotFromColumns(
-        request_data["column1"], request_data["column2"]
-    )
-
-    return_dict = {"image": "{}".format(base64_plot)}
-
     return jsonify(return_dict)
 
 

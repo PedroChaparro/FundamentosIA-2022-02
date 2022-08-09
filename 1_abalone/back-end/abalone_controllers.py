@@ -3,14 +3,10 @@ import numpy as np
 import base64
 import os
 from scipy import stats
-
 import matplotlib
 import matplotlib.pyplot as plot
 
 matplotlib.use("Agg")  # Fix main thread error
-
-# import numpy as np
-# from scipy import stats
 
 # Read csv file
 columns = [
@@ -27,6 +23,10 @@ columns = [
 
 data_frame = pd.read_csv("abalone.csv", names=columns)
 
+# -------------------------
+# Helpers
+# -------------------------
+
 
 def encode_last_generated_to_base64():
     encoded_string = ""
@@ -39,6 +39,11 @@ def encode_last_generated_to_base64():
     os.remove("./cache/last_generated.jpg")
 
     return encoded_string
+
+
+# -------------------------
+# Controllers
+# -------------------------
 
 
 def generateHistogramFromColum(column):
