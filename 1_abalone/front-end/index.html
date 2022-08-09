@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./assets/style.css" />
+		<title>🤖 ABALONE 🤖</title>
+	</head>
+	<body>
+		<aside class="aside">
+			<form class="aside__form">
+				<div class="form__group">
+					<h3>Plot selection:</h3>
+					<label class="form__label--block" for="plot">Plot: </label>
+					<select class="form__select" name="plot" id="plot">
+						<option value="histogram">Histogram</option>
+						<option value="boxplot">Boxplot</option>
+						<option value="normplot">Normplot</option>
+						<option value="scatter">Scatterplot</option>
+					</select>
+				</div>
+				<div class="form__group">
+					<h3>Columns selection:</h3>
+					<div class="check-group">
+						<label for="sex">Abalone sex</label>
+						<input type="checkbox" name="sex" id="sex" />
+					</div>
+					<div class="check-group">
+						<label for="length">Abalone length</label>
+						<input type="checkbox" name="length" id="length" />
+					</div>
+					<div class="check-group">
+						<label for="diameter">Abalone diameter</label>
+						<input type="checkbox" name="diameter" id="diameter" />
+					</div>
+					<div class="check-group">
+						<label for="height">Abalone height</label>
+						<input type="checkbox" name="height" id="height" />
+					</div>
+					<div class="check-group">
+						<label for="whole_weight">Abalone whole weight</label>
+						<input type="checkbox" name="whole_weight" id="whole_weight" />
+					</div>
+					<div class="check-group">
+						<label for="shucked_weight">Abalone shucked weight</label>
+						<input
+							type="checkbox"
+							name="shucked_weight"
+							id="shucked_weight"
+						/>
+					</div>
+					<div class="check-group">
+						<label for="viscera_weight">Abalone viscera weight</label>
+						<input
+							type="checkbox"
+							name="viscera_weight"
+							id="viscera_weight"
+						/>
+					</div>
+					<div class="check-group">
+						<label for="shell_weight">Abalone shell weight</label>
+						<input type="checkbox" name="shell_weight" id="shell_weight" />
+					</div>
+					<div class="check-group">
+						<label for="rings">Abalone rings</label>
+						<input type="checkbox" name="rings" id="rings" />
+					</div>
+				</div>
+
+				<button class="btn btn--primary btn--block" type="submit">Submit</button>
+			</form>
+		</aside>
+		<main class="main"></main>
+
+		<script src="./assets/main.js"></script>
+	</body>
+</html>

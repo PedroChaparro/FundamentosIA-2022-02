@@ -1,0 +1,89 @@
+:root {
+	--aside-bg: #edf0f2;
+	--shadows: #efefef;
+	--primary: #63c9cd;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+/* Layout */
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	display: grid;
+	grid-template-columns: 360px 1fr;
+}
+
+/*General styles*/
+.btn {
+	padding: 0.8em 1.2em;
+	border: 1px solid transparent;
+	background-color: transparent;
+	font-size: 1rem;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: bold;
+
+	transition: all 0.3s ease;
+}
+
+.btn:hover {
+	transform: scale(1.05);
+}
+
+.btn--primary {
+	background-color: var(--primary);
+	color: white;
+}
+
+.btn--block {
+	display: block;
+	width: 100%;
+	margin-block: 8px;
+}
+
+/*Aside*/
+.aside {
+	min-height: 100vh;
+	background-color: var(--aside-bg);
+	box-shadow: 0px 4px 16px var(--shadows);
+	border: 1px solid var(--shadows);
+	padding: 8px 24px;
+}
+
+/*Aside form element*/
+.aside__form {
+	width: 100%;
+}
+
+.form__group {
+	margin-block-end: 24px;
+}
+
+.form__label--block {
+	display: block;
+	margin-block: 8px 4px;
+}
+
+.form__select {
+	width: 100%;
+	padding: 8px;
+	font-size: 1rem;
+}
+
+.form__select option {
+	padding: 8px;
+}
+
+.check-group {
+	/*Center elements vertically*/
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	justify-content: space-between;
+
+	margin-block: 12px;
+}
