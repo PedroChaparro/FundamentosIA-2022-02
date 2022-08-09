@@ -109,7 +109,7 @@ def scatter_plots():
         return_dict = {
             "image": "",
             "error": True,
-            "message": "column key was not provided on JSON payload",
+            "message": "One or both columns key (col1, col2) was not provided on JSON payload",
         }
 
     # Parse to json format

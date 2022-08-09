@@ -58,6 +58,7 @@ def generateHistogramFromColum(column):
 
         # Save in the new folder
         plot.savefig("./cache/last_generated.jpg")
+        plot.clf()
 
         # Encode
         encoded_string = encode_last_generated_to_base64()
@@ -73,6 +74,7 @@ def generateBoxPlotFromColumn(column):
 
         # Save in the new folder
         plot.savefig("./cache/last_generated.jpg")
+        plot.clf()
 
         # Encode
         encoded_string = encode_last_generated_to_base64()
@@ -96,6 +98,7 @@ def generateNormPlotFromColumn(column):
         )
 
         plot.savefig("./cache/last_generated.jpg")
+        plot.clf()
 
         # Encode
         encoded_string = encode_last_generated_to_base64()
@@ -115,6 +118,7 @@ def generateScatterPlotFromColumns(column1, column2):
 
         # Save in the new folder
         plot.savefig("./cache/last_generated.jpg")
+        plot.clf()
 
         # Encode
         encoded_string = encode_last_generated_to_base64()
