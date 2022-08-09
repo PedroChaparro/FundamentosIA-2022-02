@@ -56,6 +56,8 @@ def generateHistogramFromColum(column):
             edgecolor="black",
         )
 
+        plot.title("{} HISTOGRAM".format(column.upper()))
+
         # Save in the new folder
         plot.savefig("./cache/last_generated.jpg")
         plot.clf()
@@ -71,6 +73,7 @@ def generateBoxPlotFromColumn(column):
     if column.upper() in columns:
         # Create the boxplot
         plot.boxplot(x=data_frame[column.upper()])
+        plot.title("{} BOXPLOT".format(column.upper()))
 
         # Save in the new folder
         plot.savefig("./cache/last_generated.jpg")
@@ -97,6 +100,8 @@ def generateNormPlotFromColumn(column):
             plot=ax,
         )
 
+        plot.title("{} NORMAL PROBABILITY PLOT".format(column.upper()))
+
         plot.savefig("./cache/last_generated.jpg")
         plot.clf()
 
@@ -115,6 +120,7 @@ def generateScatterPlotFromColumns(column1, column2):
             np.array(data_frame[column2.upper()]),
             edgecolor="black",
         )
+        plot.title("{} vs {} SCATTER PLOT".format(column1.upper(), column2.upper()))
 
         # Save in the new folder
         plot.savefig("./cache/last_generated.jpg")
