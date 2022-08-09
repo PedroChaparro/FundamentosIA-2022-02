@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-import ABALONE_CONTROLLER
+import abalone_controllers
 
 app = Flask(__name__)
 
@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route("/histogram/<string:column>")
 def histograms(column):
     # Parse to json format
-    base64_plot = ABALONE_CONTROLLER.generateHistogramFromColum(column)
+    base64_plot = abalone_controllers.generateHistogramFromColum(column)
     return_dict = {
         "image": "{}".format(base64_plot)
     }
@@ -18,7 +18,7 @@ def histograms(column):
 @app.route("/boxplot/<string:column>")
 def box_plots(column):
     # Parse to json format
-    base64_plot = ABALONE_CONTROLLER.generateBoxPlotFromColumn(column)
+    base64_plot = abalone_controllers.generateBoxPlotFromColumn(column)
 
     return_dict = {
         "image": "{}".format(base64_plot)
@@ -29,7 +29,7 @@ def box_plots(column):
 @app.route("/normplot/<string:column>")
 def norm_plots(column):
     # Parse to json format
-    base64_plot = ABALONE_CONTROLLER.generateNormPlotFromColumn(column)
+    base64_plot = abalone_controllers.generateNormPlotFromColumn(column)
     
     return_dict = {
         "image": "{}".format(base64_plot)
@@ -39,7 +39,7 @@ def norm_plots(column):
 
 @app.route("/scatter")
 def scatter_plots():
-    return ABALONE_CONTROLLER.generateHistogramFromColum()
+    return abalone_controllers.generateHistogramFromColum()
 
 if __name__ == "__main__":
     app.run(debug=True)
