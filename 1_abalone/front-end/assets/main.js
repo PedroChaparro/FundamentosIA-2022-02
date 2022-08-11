@@ -15,9 +15,17 @@ const validate_form = (data) => {
 		};
 	} else {
 		if (data.plot !== 'scatter') {
-			return keys.length === 2
-				? { status: true, message: 'Ok' }
-				: { status: false, message: 'Must select only one column' };
+			if (data.plot === 'boxplot' && keys.includes('sex')) {
+				return {
+					status: false,
+					message:
+						'You can´t select sex to generate a boxplot (Because is not a numeric value)',
+				};
+			} else {
+				return keys.length === 2
+					? { status: true, message: 'Ok' }
+					: { status: false, message: 'Must select only one column' };
+			}
 		} else {
 			return keys.length === 3
 				? { status: true, message: 'Ok' }
