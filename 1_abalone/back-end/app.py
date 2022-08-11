@@ -92,6 +92,7 @@ def norm_plots():
 
 @app.route("/scatter", methods=["POST"])
 def scatter_plots():
+
     # Get json data
     request_data = request.json
     return_dict = {}
@@ -116,6 +117,13 @@ def scatter_plots():
 
     # Parse to json format
     return jsonify(return_dict)
+
+
+@app.route("/statistics", methods=["GET"])
+def statistics():
+    statisticsValues = abalone_controllers.generateStatistics()
+    # Parse to json format
+    return jsonify(statisticsValues)
 
 
 if __name__ == "__main__":

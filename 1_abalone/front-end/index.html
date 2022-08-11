@@ -67,11 +67,41 @@
 						<input type="checkbox" name="rings" id="rings" />
 					</div>
 				</div>
+				<div class="form__group">
+					<h3>Atypical values parameters:</h3>
+					<div class="check-group">
+						<label for="atypical-toggle">Remove atypical values:</label>
+						<input
+							type="checkbox"
+							name="atypical-toggle"
+							id="atypical-toggle"
+						/>
+					</div>
+				</div>
+				<div class="form__group">
+					<label class="form__label--block" for="alpha">Alpha value:</label>
+					<input
+						disabled
+						class="form__input"
+						type="number"
+						name="alpha"
+						id="alpha"
+						min="0"
+					/>
+				</div>
 
 				<p class="form__error" id="error"></p>
 
 				<button class="btn btn--primary btn--block" type="submit" id="btn-submit">
-					Submit
+					Generate plot
+				</button>
+
+				<button
+					class="btn btn--secondary btn--block"
+					type="button"
+					id="statistics"
+				>
+					Generate statistics
 				</button>
 			</form>
 		</div>

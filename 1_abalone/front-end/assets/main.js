@@ -1,6 +1,10 @@
 const form = document.getElementById('client-form');
 const error_paragraph = document.getElementById('error');
+const atypicalToggle = document.getElementById('atypical-toggle');
+const alphaInput = document.getElementById('alpha');
 const main = document.getElementsByClassName('main')[0];
+const statisticsButton = document.getElementById('statistics');
+
 const URL = 'http://localhost:5000';
 
 // Helpers
@@ -65,7 +69,7 @@ const ScatterRequest = async (plot, column1, column2) => {
  *
  * @param {string} url Base 64 image
  */
-const updatePageContent = (url) => {
+const addImageOnPage = (url) => {
 	const base64 = url.slice(2, url.length - 1);
 
 	// Create the image
@@ -78,7 +82,47 @@ const updatePageContent = (url) => {
 	main.appendChild(image);
 };
 
-// Handle submit event
+const addTableOnPage = (data) => {
+	const keys = Object.keys(data);
+
+	const table = document.createElement('table');
+	table.classList.add('table');
+
+	const thead = document.createElement('thead');
+	thead.innerHTML = `
+	<tr>
+		<th scope='col'>Column</th>
+		<th scope='col'>Kurtosis</th>
+		<th scope='col'>Mean</th>
+		<th scope='col'>Median</th>
+		<th scope='col'>Mode</th>
+	</tr>
+	`;
+
+	const tbody = document.createElement('tbody');
+
+	keys.forEach((key) => {
+		console.log(data[key]);
+		const row = document.createElement('tr');
+
+		row.innerHTML = `
+			<td>${key}</td>
+			<td>${data[key]['kurtosis']}</td>
+			<td>${data[key]['mean']}</td>
+			<td>${data[key]['median']}</td>
+			<td>${data[key]['mode']}</td>
+		`;
+
+		tbody.appendChild(row);
+	});
+
+	table.appendChild(thead);
+	table.appendChild(tbody);
+	main.innerHTML = '';
+	main.appendChild(table);
+};
+
+// Event handlers
 form.addEventListener('submit', async (e) => {
 	e.preventDefault();
 
@@ -94,10 +138,10 @@ form.addEventListener('submit', async (e) => {
 		// Send the request
 		if (data.plot !== 'scatter') {
 			const response = await OneColumnRequest(data.plot, keys[1]);
-			updatePageContent(response.image);
+			addImageOnPage(response.image);
 		} else {
 			const response = await ScatterRequest(data.plot, keys[1], keys[2]);
-			updatePageContent(response.image);
+			addImageOnPage(response.image);
 		}
 	} else {
 		error_paragraph.innerText = validation.message;
@@ -105,4 +149,14 @@ form.addEventListener('submit', async (e) => {
 	}
 });
 
-OneColumnRequest('histogram', 'sex');
+atypicalToggle.addEventListener('change', () => {
+	// Toggle input disabled state
+	alphaInput.disabled ? (alphaInput.disabled = false) : (alphaInput.disabled = true);
+});
+
+statisticsButton.addEventListener('click', async () => {
+	const response = await fetch(`${URL}/statistics`);
+	const json_response = await response.json();
+
+	addTableOnPage(json_response);
+});

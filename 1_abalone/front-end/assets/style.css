@@ -40,6 +40,12 @@ body {
 	color: white;
 }
 
+.btn--secondary {
+	background-color: white;
+	color: var(--primary);
+	border: 1px solid var(--primary);
+}
+
 .btn--block {
 	display: block;
 	width: 100%;
@@ -48,7 +54,7 @@ body {
 
 /*Form*/
 .form-container {
-	width: 30%;
+	width: 40%;
 }
 
 /*Aside form element*/
@@ -65,7 +71,13 @@ body {
 	margin-block: 8px 4px;
 }
 
-.form__select {
+.form__group h3 {
+	font-size: 1.4rem;
+	margin-block: 8px;
+}
+
+.form__select,
+.form__input {
 	width: 100%;
 	padding: 8px;
 	font-size: 1rem;
@@ -95,7 +107,7 @@ body {
 
 /*Results section*/
 .main {
-	width: 70%;
+	width: 60%;
 }
 
 .results__image {
@@ -103,4 +115,31 @@ body {
 	width: 100%;
 	max-width: 640px;
 	margin: 0px auto;
+}
+
+/*Table styles*/
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	overflow-x: auto;
+}
+
+.table th {
+	background-color: var(--primary);
+	color: white;
+}
+
+.table td,
+.table th {
+	padding: 8px;
+	text-align: left;
+	border: 1px solid #cdcdcd;
+}
+
+td {
+	text-transform: lowercase;
+}
+
+.table tbody tr:nth-child(even) {
+	background-color: var(--shadows);
 }

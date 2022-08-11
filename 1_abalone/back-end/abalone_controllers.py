@@ -135,3 +135,24 @@ def generateScatterPlotFromColumns(column1, column2):
         return encoded_string
     else:
         return "One (or both) of the columns doest not exits"
+
+
+def generateStatistics():
+    # Generate values
+    mean = data_frame.mean(numeric_only=True)
+    median = data_frame.median(numeric_only=True)
+    mode = data_frame.mode()
+    kurtosis = data_frame.kurtosis(numeric_only=True)
+
+    # Organize values
+    dictionary = {}
+
+    for i in columns:
+        dictionary[i] = {
+            "mean": mean[i] if i != "SEX" else None,
+            "median": median[i] if i != "SEX" else None,
+            "mode": mode[i][0],
+            "kurtosis": kurtosis[i] if i != "SEX" else None,
+        }
+
+    return dictionary
