@@ -8,8 +8,8 @@
 		<title>🤖 ABALONE 🤖</title>
 	</head>
 	<body>
-		<aside class="aside">
-			<form class="aside__form" id="client-form">
+		<div class="form-container">
+			<form method="post" class="form" id="client-form">
 				<div class="form__group">
 					<h3>Plot selection:</h3>
 					<label class="form__label--block" for="plot">Plot: </label>
@@ -70,9 +70,11 @@
 
 				<p class="form__error" id="error"></p>
 
-				<button class="btn btn--primary btn--block" type="submit">Submit</button>
+				<button class="btn btn--primary btn--block" type="submit" id="btn-submit">
+					Submit
+				</button>
 			</form>
-		</aside>
+		</div>
 		<main class="main"></main>
 
 		<script src="./assets/main.js"></script>
