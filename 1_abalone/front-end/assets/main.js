@@ -33,7 +33,19 @@ const OneColumnRequest = async (plot, column) => {
 	const response = await fetch(`${URL}/${plot}`, {
 		method: 'POST',
 		headers: { 'Content-type': 'application/json' },
-		body: JSON.stringify({ column: column }),
+		body: JSON.stringify({ column }),
+	});
+
+	const json_response = await response.json();
+
+	return json_response;
+};
+
+const ScatterRequest = async (plot, column1, column2) => {
+	const response = await fetch(`${URL}/${plot}`, {
+		method: 'POST',
+		headers: { 'Content-type': 'application/json' },
+		body: JSON.stringify({ column1, column2 }),
 	});
 
 	const json_response = await response.json();
@@ -76,7 +88,8 @@ form.addEventListener('submit', async (e) => {
 			const response = await OneColumnRequest(data.plot, keys[1]);
 			updatePageContent(response.image);
 		} else {
-			console.log('Working on it 👷');
+			const response = await ScatterRequest(data.plot, keys[1], keys[2]);
+			updatePageContent(response.image);
 		}
 	} else {
 		error_paragraph.innerText = validation.message;

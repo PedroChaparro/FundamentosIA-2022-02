@@ -57,6 +57,8 @@ def generateHistogramFromColum(column):
         )
 
         plot.title("{} HISTOGRAM".format(column.upper()))
+        plot.xlabel(column.upper())
+        plot.ylabel("Frequency")
 
         # Save in the new folder
         plot.savefig("./cache/last_generated.jpg")
@@ -121,6 +123,8 @@ def generateScatterPlotFromColumns(column1, column2):
             edgecolor="black",
         )
         plot.title("{} vs {} SCATTER PLOT".format(column1.upper(), column2.upper()))
+        plot.xlabel(column1.upper())
+        plot.ylabel(column2.upper())
 
         # Save in the new folder
         plot.savefig("./cache/last_generated.jpg")
