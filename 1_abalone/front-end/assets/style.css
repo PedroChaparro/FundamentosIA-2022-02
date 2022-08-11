@@ -19,7 +19,7 @@ body {
 	margin: 0px auto;
 	display: flex;
 	gap: 64px;
-	padding: 12px 0;
+	padding: 12px;
 }
 
 /*General styles*/

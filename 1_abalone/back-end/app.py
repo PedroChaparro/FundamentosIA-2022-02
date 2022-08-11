@@ -14,7 +14,9 @@ def histograms():
 
     if "column" in request_data:
         base64_plot = abalone_controllers.generateHistogramFromColum(
-            request_data["column"]
+            request_data["column"],
+            request_data["atypical-toggle"],
+            request_data["atypical-alpha"],
         )
 
         return_dict = {
@@ -42,7 +44,9 @@ def box_plots():
 
     if "column" in request_data:
         base64_plot = abalone_controllers.generateBoxPlotFromColumn(
-            request_data["column"]
+            request_data["column"],
+            request_data["atypical-toggle"],
+            request_data["atypical-alpha"],
         )
 
         return_dict = {
@@ -70,7 +74,9 @@ def norm_plots():
 
     if "column" in request_data:
         base64_plot = abalone_controllers.generateNormPlotFromColumn(
-            request_data["column"]
+            request_data["column"],
+            request_data["atypical-toggle"],
+            request_data["atypical-alpha"],
         )
 
         return_dict = {
@@ -99,7 +105,10 @@ def scatter_plots():
 
     if "column1" in request_data and "column2" in request_data:
         base64_plot = abalone_controllers.generateScatterPlotFromColumns(
-            request_data["column1"], request_data["column2"]
+            request_data["column1"],
+            request_data["column2"],
+            request_data["atypical-toggle"],
+            request_data["atypical-alpha"],
         )
 
         return_dict = {
@@ -119,9 +128,15 @@ def scatter_plots():
     return jsonify(return_dict)
 
 
-@app.route("/statistics", methods=["GET"])
+@app.route("/statistics", methods=["POST"])
 def statistics():
-    statisticsValues = abalone_controllers.generateStatistics()
+    # Get json data
+    request_data = request.json
+
+    statisticsValues = abalone_controllers.generateStatistics(
+        request_data["atypical-toggle"], request_data["atypical-alpha"]
+    )
+
     # Parse to json format
     return jsonify(statisticsValues)
 

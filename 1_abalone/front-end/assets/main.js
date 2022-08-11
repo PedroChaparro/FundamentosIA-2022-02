@@ -1,7 +1,7 @@
 const form = document.getElementById('client-form');
 const error_paragraph = document.getElementById('error');
 const atypicalToggle = document.getElementById('atypical-toggle');
-const alphaInput = document.getElementById('alpha');
+const alphaInput = document.getElementById('atypical-alpha');
 const main = document.getElementsByClassName('main')[0];
 const statisticsButton = document.getElementById('statistics');
 
@@ -12,7 +12,7 @@ const validate_form = (data) => {
 	const keys = Object.keys(data);
 
 	// Validate keys
-	if (keys.length === 1) {
+	if ((!alphaInput.disabled && keys.length === 3) || keys.length === 1) {
 		return {
 			status: false,
 			message: 'Must selet at least one column',
@@ -26,12 +26,12 @@ const validate_form = (data) => {
 						'You can´t select sex to generate a boxplot (Because is not a numeric value)',
 				};
 			} else {
-				return keys.length === 2
+				return (!alphaInput.disabled && keys.length === 4) || keys.length === 2
 					? { status: true, message: 'Ok' }
 					: { status: false, message: 'Must select only one column' };
 			}
 		} else {
-			return keys.length === 3
+			return (!alphaInput.disabled && keys.length === 5) || keys.length === 3
 				? { status: true, message: 'Ok' }
 				: {
 						status: false,
@@ -41,11 +41,15 @@ const validate_form = (data) => {
 	}
 };
 
-const OneColumnRequest = async (plot, column) => {
+const OneColumnRequest = async (plot, column, atypicalToggle, atypicalAlpha) => {
 	const response = await fetch(`${URL}/${plot}`, {
 		method: 'POST',
 		headers: { 'Content-type': 'application/json' },
-		body: JSON.stringify({ column }),
+		body: JSON.stringify({
+			column,
+			'atypical-toggle': atypicalToggle,
+			'atypical-alpha': atypicalAlpha,
+		}),
 	});
 
 	const json_response = await response.json();
@@ -128,8 +132,14 @@ form.addEventListener('submit', async (e) => {
 
 	// Get data
 	const data = Object.fromEntries(new FormData(e.target));
+	console.log(data);
+
 	const keys = Object.keys(data);
 	const validation = validate_form(data);
+
+	// Check atypical data values
+	data['atypical-toggle'] = data['atypical-toggle'] ? true : false;
+	data['atypical-alpha'] = data['atypical-alpha'] ? data['atypical-alpha'] : null;
 
 	if (validation.status) {
 		error_paragraph.innerText = '';
@@ -137,7 +147,12 @@ form.addEventListener('submit', async (e) => {
 
 		// Send the request
 		if (data.plot !== 'scatter') {
-			const response = await OneColumnRequest(data.plot, keys[1]);
+			const response = await OneColumnRequest(
+				data.plot,
+				keys[1],
+				data['atypical-toggle'],
+				data['atypical-alpha']
+			);
 			addImageOnPage(response.image);
 		} else {
 			const response = await ScatterRequest(data.plot, keys[1], keys[2]);
@@ -155,7 +170,15 @@ atypicalToggle.addEventListener('change', () => {
 });
 
 statisticsButton.addEventListener('click', async () => {
-	const response = await fetch(`${URL}/statistics`);
+	const response = await fetch(`${URL}/statistics`, {
+		method: 'POST',
+		headers: { 'Content-type': 'application/json' },
+		body: JSON.stringify({
+			'atypical-toggle': !alphaInput.disabled,
+			'atypical-alpha': alphaInput.value,
+		}),
+	});
+
 	const json_response = await response.json();
 
 	addTableOnPage(json_response);
