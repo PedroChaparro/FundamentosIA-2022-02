@@ -87,7 +87,7 @@ def generateBoxPlotFromColumn(column):
 
 
 def generateNormPlotFromColumn(column):
-    if column.upper() in column:
+    if column.upper() in columns:
         # Normal probability plot
         normal_prob_figure = plot.figure()
 
