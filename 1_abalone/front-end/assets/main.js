@@ -57,11 +57,16 @@ const OneColumnRequest = async (plot, column, atypicalToggle, atypicalAlpha) => 
 	return json_response;
 };
 
-const ScatterRequest = async (plot, column1, column2) => {
+const ScatterRequest = async (plot, column1, column2, atypicalToggle, atypicalAlpha) => {
 	const response = await fetch(`${URL}/${plot}`, {
 		method: 'POST',
 		headers: { 'Content-type': 'application/json' },
-		body: JSON.stringify({ column1, column2 }),
+		body: JSON.stringify({
+			column1,
+			column2,
+			'atypical-toggle': atypicalToggle,
+			'atypical-alpha': atypicalAlpha,
+		}),
 	});
 
 	const json_response = await response.json();
@@ -97,6 +102,7 @@ const addTableOnPage = (data) => {
 	<tr>
 		<th scope='col'>Column</th>
 		<th scope='col'>Kurtosis</th>
+		<th scope='col'>Skew</th>
 		<th scope='col'>Mean</th>
 		<th scope='col'>Median</th>
 		<th scope='col'>Mode</th>
@@ -112,6 +118,7 @@ const addTableOnPage = (data) => {
 		row.innerHTML = `
 			<td>${key}</td>
 			<td>${data[key]['kurtosis']}</td>
+			<td>${data[key]['skew']}</td>
 			<td>${data[key]['mean']}</td>
 			<td>${data[key]['median']}</td>
 			<td>${data[key]['mode']}</td>
@@ -155,7 +162,13 @@ form.addEventListener('submit', async (e) => {
 			);
 			addImageOnPage(response.image);
 		} else {
-			const response = await ScatterRequest(data.plot, keys[1], keys[2]);
+			const response = await ScatterRequest(
+				data.plot,
+				keys[1],
+				keys[2],
+				data['atypical-toggle'],
+				data['atypical-alpha']
+			);
 			addImageOnPage(response.image);
 		}
 	} else {

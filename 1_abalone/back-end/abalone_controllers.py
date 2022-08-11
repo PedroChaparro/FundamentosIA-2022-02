@@ -202,6 +202,8 @@ def generateStatistics(atypical_toggle, atypical_alpha):
     median = filtered_data_frame.median(numeric_only=True)
     mode = filtered_data_frame.mode()
     kurtosis = filtered_data_frame.kurtosis(numeric_only=True)
+    skew = filtered_data_frame.skew(numeric_only=True)
+    print(skew)
 
     # Organize values
     dictionary = {}
@@ -212,6 +214,7 @@ def generateStatistics(atypical_toggle, atypical_alpha):
             "median": median[i] if i != "SEX" else None,
             "mode": mode[i][0],
             "kurtosis": kurtosis[i] if i != "SEX" else None,
+            "skew": skew[i] if i != "SEX" else None,
         }
 
     return dictionary
