@@ -203,7 +203,6 @@ def generateStatistics(atypical_toggle, atypical_alpha):
     mode = filtered_data_frame.mode()
     kurtosis = filtered_data_frame.kurtosis(numeric_only=True)
     skew = filtered_data_frame.skew(numeric_only=True)
-    print(skew)
 
     # Organize values
     dictionary = {}
