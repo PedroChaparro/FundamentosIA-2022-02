@@ -1,6 +1,6 @@
 # Initial configuration
 
-## Create a virtual env
+## Create a virtual env (optional)
 
 Install virtualenv
 
@@ -20,13 +20,15 @@ Activate the new environment
 ./env/Scripts/activate
 ```
 
-Install dependencies
+## Install dependencies
+
+Should be located on `./1_abalone/back-end/` folder.
 
 ```
 pip install -r requirements.txt
 ```
 
-Start the API
+## Start the API
 
 ```
 python ./app.py
