@@ -15,22 +15,37 @@ const validate_form = (data) => {
 	if ((!alphaInput.disabled && keys.length === 3) || keys.length === 1) {
 		return {
 			status: false,
-			message: 'Must selet at least one column',
+			message: 'Must select at least one column',
 		};
 	} else {
+		// All plots (except scatter) accept only column selected
 		if (data.plot !== 'scatter') {
-			if (data.plot === 'boxplot' && keys.includes('sex')) {
+			// Sex column can't generate normal probability plot or box plot
+			if (
+				data.plot === 'boxplot' ||
+				(data.plot === 'normplot' && keys.includes('sex'))
+			) {
 				return {
 					status: false,
 					message:
-						'You can´t select sex to generate a boxplot (Because is not a numeric value)',
+						'You can´t select sex column to generate a box plot or a normal plot (Because is not a numeric value)',
+				};
+			}
+			// Can't remove atypical values on sex column
+			else if (keys.includes('sex') && !alphaInput.disabled) {
+				return {
+					status: false,
+					message:
+						'Yo can´t remove atypical values on sex column (Because is not a numeric value)',
 				};
 			} else {
 				return (!alphaInput.disabled && keys.length === 4) || keys.length === 2
 					? { status: true, message: 'Ok' }
 					: { status: false, message: 'Must select only one column' };
 			}
-		} else {
+		}
+		// Scatter plot only accept two column selected
+		else {
 			return (!alphaInput.disabled && keys.length === 5) || keys.length === 3
 				? { status: true, message: 'Ok' }
 				: {
