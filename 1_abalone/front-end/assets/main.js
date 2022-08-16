@@ -22,8 +22,8 @@ const validate_form = (data) => {
 		if (data.plot !== 'scatter') {
 			// Sex column can't generate normal probability plot or box plot
 			if (
-				data.plot === 'boxplot' ||
-				(data.plot === 'normplot' && keys.includes('sex'))
+				(data.plot === 'boxplot' || data.plot === 'normplot') &&
+				keys.includes('sex')
 			) {
 				return {
 					status: false,
