@@ -108,6 +108,7 @@ body {
 /*Results section*/
 .main {
 	width: 60%;
+	overflow-x: auto;
 }
 
 .results__image {
