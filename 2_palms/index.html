@@ -16,9 +16,27 @@
 	</head>
 	<body>
 		<div class="layout">
-			<form class="symptoms"></form>
+			<form class="symptoms">
+				<!--Only entry points / bh-->
+				<div class="form-group">
+					<!--name must be the label of the vis js node-->
+					<label for="cold">Live in cold weather: </label>
+					<input type="checkbox" name="C" id="cold" />
+				</div>
+				<div class="form-group">
+					<label for="feathers">Has feathers: </label>
+					<input type="checkbox" name="A" id="feathers" />
+				</div>
+				<div class="form-group">
+					<label for="fly">Can fly: </label>
+					<input type="checkbox" name="B" id="fly" />
+				</div>
+			</form>
 			<div class="network" id="mynetwork"></div>
-			<div class="results"></div>
+			<div class="results">
+				<div class="content"></div>
+				<button class="btn btn--block">Start</button>
+			</div>
 		</div>
 
 		<!--Custom scripts-->
