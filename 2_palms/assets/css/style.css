@@ -1,0 +1,32 @@
+:root {
+	--primary-color: #139b49;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+/*Columns layout*/
+.layout {
+	display: grid;
+	gap: 16px;
+	min-height: 100vh;
+	grid-template-columns: 1fr 3fr 2fr;
+}
+
+/*Aside form*/
+.symptoms {
+	background-color: #ffc2ff;
+}
+
+.network {
+	/*Vis network container*/
+	width: 100%;
+	height: 100vh; /*Fix height*/
+}
+
+.results {
+	background-color: #d2ffd2;
+}
