@@ -4,24 +4,24 @@ const container = document.getElementById('mynetwork');
 // Vis variables
 // --- --- --- --- ---
 const nodes = new vis.DataSet([
-	{ id: 1, label: 'A' }, //Plumas
-	{ id: 2, label: 'B' }, //Vuela
-	{ id: 3, label: 'C' }, //Frio
-	{ id: 4, label: 'D' }, //Ave
-	{ id: 5, label: 'E' }, //Pinguino
-	{ id: 6, label: 'F' }, //Aguila
-	{ id: 7, label: 'Cond', color: 'red' }, //Cond 1
-	{ id: 8, label: 'Cond', color: 'red' }, //Cond 2
+	{ id: 1, label: 'A', x: 200, y: 0, fixed: true }, //Plumas
+	{ id: 2, label: 'B', x: 200, y: 200, fixed: true }, //Vuela
+	{ id: 3, label: 'C', x: 400, y: 200, fixed: true }, //Frio
+	{ id: 4, label: 'D', x: 600, y: 200, fixed: true }, //Ave
+	{ id: 5, label: 'C && D', color: 'red', x: 200, y: 400, fixed: true }, //Cond 1
+	{ id: 6, label: 'B && D', color: 'red', x: 800, y: 400, fixed: true }, //Cond 2
+	{ id: 7, label: 'E', x: 200, y: 600, fixed: true }, //Pinguino
+	{ id: 8, label: 'F', x: 600, y: 600, fixed: true }, //Aguila
 ]);
 
 const edges = new vis.DataSet([
 	{ from: 1, to: 4, arrows: 'to' },
-	{ from: 4, to: 7, arrows: 'to' },
-	{ from: 3, to: 7, arrows: 'to' },
-	{ from: 4, to: 8, arrows: 'to' },
-	{ from: 2, to: 8, arrows: 'to' },
-	{ from: 7, to: 5, arrows: 'to' },
-	{ from: 8, to: 6, arrows: 'to' },
+	{ from: 4, to: 5, arrows: 'to' },
+	{ from: 3, to: 5, arrows: 'to' },
+	{ from: 4, to: 6, arrows: 'to' },
+	{ from: 2, to: 6, arrows: 'to' },
+	{ from: 5, to: 7, arrows: 'to' },
+	{ from: 6, to: 8, arrows: 'to' },
 ]);
 
 const data = {
@@ -42,4 +42,4 @@ const options = {
 // --- --- --- --- ---
 // Create the network
 // --- --- --- --- ---
-const network = new vis.Network(container, data, options);
+let network = new vis.Network(container, data, options);
