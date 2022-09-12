@@ -2,8 +2,11 @@ const form = document.getElementById('symptoms');
 const startButton = document.getElementById('start');
 const resetButton = document.getElementById('reset');
 
+const iterator = document.getElementById('iterator');
+let it = 0;
+
 resetButton.addEventListener('click', () => {
-	resetColors();
+	reset();
 });
 
 form.addEventListener('submit', (e) => {
@@ -11,12 +14,15 @@ form.addEventListener('submit', (e) => {
 });
 
 startButton.addEventListener('click', () => {
-	resetColors();
+	reset();
 	const selections = Object.fromEntries(new FormData(form));
 	recursivelyEval(Object.keys(selections));
 });
 
-const resetColors = () => {
+const reset = () => {
+	it = 0;
+	iterator.textContent = `Iteracion: ${it}`;
+
 	const nodesArr = Object.values(nodes._data);
 	nodesArr.forEach((node) => {
 		if (node.isCondition) {
@@ -87,13 +93,19 @@ const recursivelyEval = (conflictSet) => {
 		}
 	});
 
-	// Update network
-	network = new vis.Network(container, data, options);
-
 	// If some new node was added, continue the recursive evaluation
 	if (conflictSet.length !== currentNodes.length) {
 		const newConflictSet = [];
 		currentNodes.forEach((node) => newConflictSet.push(node.label));
-		recursivelyEval(newConflictSet);
+
+		// Update network
+		setTimeout(() => {
+			network = new vis.Network(container, data, options);
+
+			it++;
+			iterator.textContent = `Iteracion: ${it}`;
+
+			recursivelyEval(newConflictSet);
+		}, 3000);
 	}
 };
