@@ -16,6 +16,7 @@ startButton.addEventListener('click', () => {
  */
 const recursivelyEval = (conflictSet) => {
 	// console.log(conflictSet);
+	network = new vis.Network(container, data, options); // Update network
 
 	// Get nodes object (ids, and labels)
 	const nodesArr = Object.values(nodes._data); // [{id: 1, label: 'A'}]
@@ -23,7 +24,6 @@ const recursivelyEval = (conflictSet) => {
 	const currentNodes = nodesArr.filter((node) => {
 		if (conflictSet.includes(node.label)) {
 			node.color = 'green';
-			network = new vis.Network(container, data, options); // Update network
 			return node;
 		}
 	});
@@ -61,7 +61,6 @@ const recursivelyEval = (conflictSet) => {
 		// If all conditions are true, add the node to nodes list
 		if (correct && !currentNodes.some((node) => node.id === to_node.id)) {
 			nodes._data[to_node.id].color = 'green'; //Change node color
-			network = new vis.Network(container, data, options); // Update network
 			currentNodes.push(to_node);
 		}
 	});
