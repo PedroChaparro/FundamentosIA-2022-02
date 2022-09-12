@@ -22,6 +22,7 @@ body {
 	padding: 0.8em;
 	font-size: 1.2rem;
 	font-weight: bolder;
+	margin-block: 8px;
 
 	outline: none;
 	cursor: pointer;
@@ -58,15 +59,23 @@ body {
 /* Aside form styles */
 /*- - - - - - - -*/
 
+.symptoms {
+	max-height: 100vh;
+	overflow-y: auto;
+}
+
 .form-group {
 	display: flex;
 	justify-content: space-between;
-	margin-block: 8px;
+	gap: 16px;
+	margin-block: 12px;
 }
 
 .form-group label {
 	font-weight: lighter;
 	font-size: 1.2rem;
+	text-align: justify;
+	text-transform: capitalize;
 }
 
 /*- - - - - - - -*/
