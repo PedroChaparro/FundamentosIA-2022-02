@@ -27,47 +27,308 @@ const edges = new vis.DataSet([
 */
 
 const nodes = new vis.DataSet([
-	{ id: 1, label: 'AMHJ', x: 0, y: 0, fixed: true },
-	{ id: 2, label: 'HJM', x: 100, y: 0, fixed: true },
-	{ id: 3, label: 'DCTN', x: 200, y: 0, fixed: true },
-	{ id: 4, label: 'CHJ', x: 300, y: 0, fixed: true },
-	{ id: 5, label: 'PFTP', x: 400, y: 0, fixed: true },
-	{ id: 6, label: 'PBF', x: 500, y: 0, fixed: true },
-	{ id: 7, label: 'PR', x: 600, y: 0, fixed: true },
-	{ id: 8, label: 'DDI', x: 700, y: 0, fixed: true },
-	{ id: 9, label: 'DCF', x: 800, y: 0, fixed: true },
-	{ id: 10, label: 'DSF', x: 900, y: 0, fixed: true },
-	{ id: 11, label: 'NBL', x: 1000, y: 0, fixed: true },
-	{ id: 12, label: 'DG', x: 1100, y: 0, fixed: true },
-	{ id: 13, label: 'PV', x: 1200, y: 0, fixed: true },
-	{ id: 14, label: 'ECP', x: 1300, y: 0, fixed: true },
-	{ id: 15, label: 'RDHR', x: 1400, y: 0, fixed: true },
-	{ id: 16, label: 'PCA', x: 1500, y: 0, fixed: true },
-	{ id: 17, label: 'SCMH', x: 1600, y: 0, fixed: true },
-	{ id: 18, label: 'AMHJ && HJM && DTCN && CHJ', color: 'red', x: 0, y: 200, fixed: true },
+	{
+		id: 1,
+		label: 'AMHJ',
+		x: 0,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 2,
+		label: 'HJM',
+		x: 100,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 3,
+		label: 'DCTN',
+		x: 200,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 4,
+		label: 'CHJ',
+		x: 300,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 5,
+		label: 'PFTP',
+		x: 400,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 6,
+		label: 'PBF',
+		x: 500,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 7,
+		label: 'PR',
+		x: 600,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 8,
+		label: 'DDI',
+		x: 700,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 9,
+		label: 'DCF',
+		x: 800,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 10,
+		label: 'DSF',
+		x: 900,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 11,
+		label: 'NBL',
+		x: 1000,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 12,
+		label: 'DG',
+		x: 1100,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 13,
+		label: 'PV',
+		x: 1200,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 14,
+		label: 'ECP',
+		x: 1300,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 15,
+		label: 'RDHR',
+		x: 1400,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 16,
+		label: 'PCA',
+		x: 1500,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 17,
+		label: 'SCMH',
+		x: 1600,
+		y: 0,
+		fixed: true,
+		color: {
+			background: '#97C2FC',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 18,
+		label: 'AMHJ && HJM && DTCN && CHJ',
+		color: {
+			background: '#FC9797',
+			border: '#EB4040',
+		},
+		x: 0,
+		y: 200,
+		fixed: true,
+		isCondition: true, //Custom flag
+	},
 	{
 		id: 19,
 		label: 'PFTP && PBF && PR && DDI && DCF && DSF',
-		color: 'red',
+		color: {
+			background: '#FC9797',
+			border: '#EB4040',
+		},
 		x: 400,
 		y: 200,
 		fixed: true,
+		isCondition: true, //Custom flag
 	},
 	{
 		id: 20,
 		label: 'PFTP && PBF && PR && DDI && DCF && DSF && NBL',
-		color: 'red',
+		color: {
+			background: '#FC9797',
+			border: '#EB4040',
+		},
 		x: 800,
 		y: 200,
 		fixed: true,
+		isCondition: true, //Custom flag
 	},
-	{ id: 21, label: 'DG && PV && ECP', color: 'red', x: 1200, y: 200, fixed: true },
-	{ id: 22, label: 'RDHR && PBF && PCA && SCMH', color: 'red', x: 1600, y: 200, fixed: true },
-	{ id: 23, label: 'PUDRICION COGOLLO', x: 400, y: 400, fixed: true },
-	{ id: 24, label: 'MARCHITEZ SORPRESIVA', x: 600, y: 400, fixed: true },
-	{ id: 25, label: 'MARCHITEZ LETAL', x: 800, y: 400, fixed: true },
-	{ id: 26, label: 'AÑUBLO FOLIAR', x: 1000, y: 400, fixed: true },
-	{ id: 27, label: 'DEFICIENCIA DEL MAGNESIO', x: 1200, y: 400, fixed: true },
+	{
+		id: 21,
+		label: 'DG && PV && ECP',
+		color: {
+			background: '#FC9797',
+			border: '#EB4040',
+		},
+		x: 1200,
+		y: 200,
+		fixed: true,
+		isCondition: true, //Custom flag
+	},
+	{
+		id: 22,
+		label: 'RDHR && PBF && PCA && SCMH',
+		color: {
+			background: '#FC9797',
+			border: '#EB4040',
+		},
+		x: 1600,
+		y: 200,
+		fixed: true,
+		isCondition: true, //Custom flag
+	},
+	{
+		id: 23,
+		label: 'PUDRICION COGOLLO',
+		x: 400,
+		y: 400,
+		fixed: true,
+		color: {
+			background: '#97c2fc',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 24,
+		label: 'MARCHITEZ SORPRESIVA',
+		x: 600,
+		y: 400,
+		fixed: true,
+		color: {
+			background: '#97c2fc',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 25,
+		label: 'MARCHITEZ LETAL',
+		x: 800,
+		y: 400,
+		fixed: true,
+		color: {
+			background: '#97c2fc',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 26,
+		label: 'AÑUBLO FOLIAR',
+		x: 1000,
+		y: 400,
+		fixed: true,
+		color: {
+			background: '#97c2fc',
+			border: '#4089EB',
+		},
+	},
+	{
+		id: 27,
+		label: 'DEFICIENCIA DEL MAGNESIO',
+		x: 1200,
+		y: 400,
+		fixed: true,
+		color: {
+			background: '#97c2fc',
+			border: '#4089EB',
+		},
+	},
 ]);
 
 const edges = new vis.DataSet([
@@ -110,6 +371,7 @@ const data = {
 const options = {
 	nodes: {
 		shape: 'dot',
+		borderWidth: 3,
 	},
 	edges: {
 		// Fix edges color to not depend of node color

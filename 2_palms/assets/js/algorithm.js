@@ -1,14 +1,35 @@
 const form = document.getElementById('symptoms');
 const startButton = document.getElementById('start');
+const resetButton = document.getElementById('reset');
+
+resetButton.addEventListener('click', () => {
+	resetColors();
+});
 
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
 });
 
 startButton.addEventListener('click', () => {
+	resetColors();
 	const selections = Object.fromEntries(new FormData(form));
 	recursivelyEval(Object.keys(selections));
 });
+
+const resetColors = () => {
+	const nodesArr = Object.values(nodes._data);
+	nodesArr.forEach((node) => {
+		if (node.isCondition) {
+			node.color.background = '#FC9797';
+			node.color.border = '#EB4040';
+		} else {
+			node.color.background = '#97C2FC';
+			node.color.border = '#4089EB';
+		}
+	});
+
+	network = new vis.Network(container, data, options); // Update network
+};
 
 /**
  * Evaluar recursivamente el conjunto conflicto actual frente a la base de hechos
@@ -16,14 +37,14 @@ startButton.addEventListener('click', () => {
  */
 const recursivelyEval = (conflictSet) => {
 	// console.log(conflictSet);
-	network = new vis.Network(container, data, options); // Update network
 
 	// Get nodes object (ids, and labels)
 	const nodesArr = Object.values(nodes._data); // [{id: 1, label: 'A'}]
 
 	const currentNodes = nodesArr.filter((node) => {
 		if (conflictSet.includes(node.label)) {
-			node.color = 'green';
+			node.color.background = '#A5E69A';
+			node.color.border = '#55DF3A';
 			return node;
 		}
 	});
@@ -60,10 +81,14 @@ const recursivelyEval = (conflictSet) => {
 
 		// If all conditions are true, add the node to nodes list
 		if (correct && !currentNodes.some((node) => node.id === to_node.id)) {
-			nodes._data[to_node.id].color = 'green'; //Change node color
+			to_node.color.background = '#A5E69A'; // Change color
+			to_node.color.border = '#55DF3A'; // Change border
 			currentNodes.push(to_node);
 		}
 	});
+
+	// Update network
+	network = new vis.Network(container, data, options);
 
 	// If some new node was added, continue the recursive evaluation
 	if (conflictSet.length !== currentNodes.length) {
