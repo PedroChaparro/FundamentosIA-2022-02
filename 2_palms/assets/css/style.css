@@ -96,6 +96,7 @@ body {
 
 	display: flex;
 	flex-direction: column;
+	text-align: center;
 }
 
 .results #iterator {
@@ -110,12 +111,46 @@ body {
 
 .results .content {
 	flex-grow: 1; /* Align button to the end*/
+	padding-block-start: 24px;
 }
 
 .symptoms,
 .results {
 	padding: 12px 16px;
 	box-shadow: 0px 0px 16px #dcdcdc;
+}
+
+.results .content * {
+	margin-block: 12px;
+}
+
+.result__title {
+	color: var(--primary-color);
+	text-align: center;
+}
+
+.result__image {
+	width: 60%;
+	aspect-ratio: 16/9;
+	object-fit: cover;
+	border-radius: 12px;
+}
+
+.result__description,
+.result__treatment {
+	font-size: 1.2rem;
+	text-align: justify;
+	margin-block: 24px;
+	line-height: 1.2;
+}
+
+.result__treatment span {
+	color: white;
+	font-weight: bold;
+	background-color: var(--primary-color);
+	padding: 4px;
+	border-radius: 8px;
+	margin-inline-end: 8px;
 }
 
 /*- - - - - - - -*/
