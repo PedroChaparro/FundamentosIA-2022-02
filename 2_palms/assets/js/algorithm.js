@@ -55,6 +55,8 @@ const recursivelyEval = (conflictSet) => {
 		}
 	});
 
+	network = new vis.Network(container, data, options);
+
 	// Get and sort possible edges
 	const edgesArr = Object.values(edges._data); // [{from: 1, to: 2, id: 'someid}]
 
@@ -69,6 +71,8 @@ const recursivelyEval = (conflictSet) => {
 	// Eval possible edges
 	possibleEdges.forEach((edge) => {
 		let correct = true; // Flag
+		let existing_conditions = 0;
+		let possible = false;
 
 		const to_node = nodesArr.filter((node) => node.id == edge.to)[0];
 
@@ -79,14 +83,19 @@ const recursivelyEval = (conflictSet) => {
 
 		// Eval each condition
 		for (let i = 0; i < conditions.length; i++) {
-			if (!currentNodes.some((node) => node.id === conditions[i].from)) {
+			if (currentNodes.some((node) => node.id === conditions[i].from)) {
+				existing_conditions++;
+			} else {
 				correct = false;
 				break;
 			}
 		}
 
+		// If at least half conditions exist, mark as possible
+		possible = existing_conditions >= Math.ceil(conditions.length / 2) ? true : false;
+
 		// If all conditions are true, add the node to nodes list
-		if (correct && !currentNodes.some((node) => node.id === to_node.id)) {
+		if (possible && !currentNodes.some((node) => node.id === to_node.id)) {
 			to_node.color.background = '#A5E69A'; // Change color
 			to_node.color.border = '#55DF3A'; // Change border
 			currentNodes.push(to_node);
@@ -106,6 +115,6 @@ const recursivelyEval = (conflictSet) => {
 			iterator.textContent = `Iteracion: ${it}`;
 
 			recursivelyEval(newConflictSet);
-		}, 3000);
+		}, 2000);
 	}
 };
