@@ -110,9 +110,16 @@ body {
 	text-transform: uppercase;
 }
 
+.results #next {
+	display: none;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+}
+
 .results .content {
 	flex-grow: 1; /* Align button to the end*/
-	padding-block-start: 24px;
+	padding-block-start: 48px;
 }
 
 .symptoms,
@@ -138,6 +145,7 @@ body {
 
 .result__description,
 .result__treatment {
+	white-space: pre-line;
 	font-size: 1.2rem;
 	text-align: justify;
 	margin-block: 24px;

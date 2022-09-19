@@ -1,6 +1,7 @@
 const form = document.getElementById('symptoms');
 const startButton = document.getElementById('start');
 const resetButton = document.getElementById('reset');
+const nextButton = document.getElementById('next');
 
 const iterator = document.getElementById('iterator');
 let it = 0;
@@ -14,22 +15,31 @@ const rImage = document.querySelector('.result__image');
 const rDescription = document.querySelector('.result__description');
 const rTreatment = document.querySelector('.result__treatment');
 
-const results = {
+const possible_results = {
 	'PUDRICION DEL COGOLLO': {
 		title: 'Pudrición del cogollo',
 		image_relative_route: './assets/images/pudricion_cogollo.png',
-		description: `Es una de las enfermedades más serias y devastadoras, 
-		con episodios severos en Brasil, Colombia, Ecuador, Panamá, Surinam, 
-		Costa Rica, Nicaragua, Honduras, Perú y Venezuela.\n\nEsta enfermedad 
-		comienza en los  tejidos inmaduros de las flechas, pero se expande con 
-		rapidez afectando los nuevos tejidos.`,
-		treatment: `Lo más importante es una detección temprana para poder
-		remover el tejido afectado y protejer el tejido sano con insecticidas,
-		fungicidad y bactericidas.\n\nEs recomendable realizar un programa de
-		aspersión para eliminar los estados avanzados de la enfermedad y remover 
-		lotes afectados.`,
+		description:
+			'Es una de las enfermedades más serias y devastadoras, con episodios severos en Brasil, Colombia, Ecuador, Panamá, Surinam, Costa Rica, Nicaragua, Honduras, Perú y Venezuela.\n\nEsta enfermedad comienza en los  tejidos inmaduros de las flechas, pero se expande con rapidez afectando los nuevos tejidos.',
+		treatment:
+			'Lo más importante es una detección temprana para poder remover el tejido afectado y protejer el tejido sano con insecticidas, fungicidad y bactericidas.\n\nEs recomendable realizar un programa de aspersión para eliminar los estados avanzados de la enfermedad y remover lotes afectados.',
 	},
+	'MOTEADO': {},
+	'PUDRICIÓN BASAL DEL TRONCO': {
+		title: 'Pudrición basal del tronco',
+		image_relative_route: './assets/images/pudricion_basal.jpg',
+		description:
+			'Esta enfermedad es mas común en Africa, Asia e Indonesia. Es causada por Ganoderma Lucidum y G. Zonatum. Produce que los tejidos invadidos se descompongan y aparezcan cavidades más o menos grandes en la base del estipe.',
+		treatment:
+			'Se recomienda la remoción de los tejidos infectados y la aplicación de fungicidas protectores con una pasta cicatrizante. Las plantas afectadas deben destruirse "in situ", al igual que sus raíces.',
+	},
+	'AÑUBLO FOLIAR': {},
+	'DEFICIENCIA DE MAGNESIO': {},
+	'PUDRICIÓN DE LOS RACIMOS': {},
 };
+
+let current_results = {};
+let actual_page = 0;
 
 // *** *** *** *** ***
 // Algorithm
@@ -47,6 +57,12 @@ startButton.addEventListener('click', () => {
 	reset();
 	const selections = Object.fromEntries(new FormData(form));
 	recursivelyEval(Object.keys(selections));
+});
+
+nextButton.addEventListener('click', () => {
+	actual_page++;
+	actual_page == current_results.length ? (actual_page = 0) : (actual_page = actual_page);
+	updateResultPage(actual_page);
 });
 
 const reset = () => {
@@ -157,17 +173,29 @@ const recursivelyEval = (conflictSet) => {
 
 const updateResults = (conflictSet) => {
 	const finals = conflictSet.filter((node) => node.isFinal);
-	const result = results[finals[0].label];
+	current_results = [];
+	finals.forEach((final) => current_results.push(possible_results[final.label]));
+
+	const result = possible_results[finals[0].label];
 	//const rTitle = document.querySelector('.result__title');
 	//const rImage = document.querySelector('.result__image');
 	//const rDescription = document.querySelector('.result__description');
 	//const rTreatment = document.querySelector('.result__treatment');
 
-	rTitle.textContent = result.title;
-	rImage.src = result.image_relative_route;
-	rImage.alt = `Imagen representativa de: ${result.title}`;
-	rDescription.textContent = result.description;
-	rTreatment.innerHTML = `
-	<span>Tratamiento: </span> ${result.treatment}
-	`;
+	if (finals.length === 0) {
+		alert('No se encontraron enfermedades');
+	} else {
+		updateResultPage(0);
+		if (finals.length > 1) nextButton.style.display = 'block';
+	}
+};
+
+const updateResultPage = (page) => {
+	console.log(current_results);
+	console.log(page);
+	rTitle.textContent = current_results[page].title;
+	rImage.src = current_results[page].image_relative_route;
+	rImage.alt = `Imagen representativa de: ${current_results[page].title}`;
+	rDescription.textContent = current_results[page].description;
+	rTreatment.innerHTML = `<span>Tratamiento: </span> ${current_results[page].treatment}`;
 };
