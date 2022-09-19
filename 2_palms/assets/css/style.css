@@ -59,7 +59,8 @@ body {
 /* Aside form styles */
 /*- - - - - - - -*/
 
-.symptoms {
+.symptoms,
+.results {
 	max-height: 100vh;
 	overflow-y: auto;
 }
@@ -130,9 +131,8 @@ body {
 }
 
 .result__image {
-	width: 60%;
-	aspect-ratio: 16/9;
-	object-fit: cover;
+	width: 65%;
+	object-fit: contain;
 	border-radius: 12px;
 }
 

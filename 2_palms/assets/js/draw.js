@@ -371,10 +371,11 @@ const nodes = new vis.DataSet([
 	},
 	{
 		id: 31,
-		label: 'Pudrición del cogollo',
+		label: 'PUDRICION DEL COGOLLO',
 		x: 150,
 		y: 600,
 		fixed: true,
+		isFinal: true,
 		color: {
 			background: '#97c2fc',
 			border: '#4089EB',
@@ -382,10 +383,11 @@ const nodes = new vis.DataSet([
 	},
 	{
 		id: 32,
-		label: 'Moteado',
+		label: 'MOTEADO',
 		x: 450,
 		y: 600,
 		fixed: true,
+		isFinal: true,
 		color: {
 			background: '#97c2fc',
 			border: '#4089EB',
@@ -393,10 +395,11 @@ const nodes = new vis.DataSet([
 	},
 	{
 		id: 33,
-		label: 'Pudrición Basal del tronco',
+		label: 'PUDRICIÓN BASAL DEL TRONCO',
 		x: 700,
 		y: 600,
 		fixed: true,
+		isFinal: true,
 		color: {
 			background: '#97c2fc',
 			border: '#4089EB',
@@ -404,10 +407,11 @@ const nodes = new vis.DataSet([
 	},
 	{
 		id: 34,
-		label: 'Añublo Foliar',
+		label: 'AÑUBLO FOLIAR',
 		x: 1050,
 		y: 600,
 		fixed: true,
+		isFinal: true,
 		color: {
 			background: '#97c2fc',
 			border: '#4089EB',
@@ -415,10 +419,11 @@ const nodes = new vis.DataSet([
 	},
 	{
 		id: 35,
-		label: 'Deficiencia del magnesio',
+		label: 'DEFICIENCIA DE MAGNESIO',
 		x: 1350,
 		y: 600,
 		fixed: true,
+		isFinal: true,
 		color: {
 			background: '#97c2fc',
 			border: '#4089EB',
@@ -426,10 +431,11 @@ const nodes = new vis.DataSet([
 	},
 	{
 		id: 36,
-		label: 'Pudrición de los racimos',
+		label: 'PUDRICIÓN DE LOS RACIMOS',
 		x: 1600,
 		y: 600,
 		fixed: true,
+		isFinal: true,
 		color: {
 			background: '#97c2fc',
 			border: '#4089EB',
