@@ -18,13 +18,18 @@ const rTreatment = document.querySelector('.result__treatment');
 const possible_results = {
 	'PUDRICION DEL COGOLLO': {
 		title: 'Pudrición del cogollo',
-		image_relative_route: './assets/images/pudricion_cogollo.png',
+		image_relative_route: './assets/images/pudricion_cogollo.jpg',
 		description:
 			'Es una de las enfermedades más serias y devastadoras, con episodios severos en Brasil, Colombia, Ecuador, Panamá, Surinam, Costa Rica, Nicaragua, Honduras, Perú y Venezuela.\n\nEsta enfermedad comienza en los  tejidos inmaduros de las flechas, pero se expande con rapidez afectando los nuevos tejidos.',
 		treatment:
 			'Lo más importante es una detección temprana para poder remover el tejido afectado y protejer el tejido sano con insecticidas, fungicidad y bactericidas.\n\nEs recomendable realizar un programa de aspersión para eliminar los estados avanzados de la enfermedad y remover lotes afectados.',
 	},
-	'MOTEADO': {},
+	'MOTEADO': {
+		title:'Moteado',
+		image_relative_route: './assets/images/moteado.png',
+		description:'No es un síntoma que caracterice la enfermedad y se presenta independientemente de las pudriciones de flecha-cogollo; sin embargo, palmas con pudriciones de flecha acentúan el síntoma de moteado. Los moteados leves o moderados desaparecen con los cambios de clima y buenas prácticas agronómicas.',
+		treatment:'1.Revisar cuidadosamente las palmitas de vivero, ante su transplante a sitio definitivo, a fin e eliminar todas aquellas sospechosas de estar infectadas 2.Eliminar especies de gramíneas en los lotes, reemplazándolas por cobertura de pueraria Erradicar las palmas, tan pronto presenten síntomas de la enfermedad 3.Mantener libre de malezas los círculos (zona  de  plateo) de las palma 4.Protección de las palmas, especialmente en el vivero, mediante la aplicación de insecticidas que eliminen posibles vectores de la enfermedad '
+	},
 	'PUDRICIÓN BASAL DEL TRONCO': {
 		title: 'Pudrición basal del tronco',
 		image_relative_route: './assets/images/pudricion_basal.jpg',
@@ -33,9 +38,25 @@ const possible_results = {
 		treatment:
 			'Se recomienda la remoción de los tejidos infectados y la aplicación de fungicidas protectores con una pasta cicatrizante. Las plantas afectadas deben destruirse "in situ", al igual que sus raíces.',
 	},
-	'AÑUBLO FOLIAR': {},
-	'DEFICIENCIA DE MAGNESIO': {},
-	'PUDRICIÓN DE LOS RACIMOS': {},
+	'AÑUBLO FOLIAR': {title: 'Añublo foliar',
+	image_relative_route: './assets/images/añublo_foliar.png',
+	description:
+		'Esta enfermedad es mas común en Africa, Asia e Indonesia. Es causada por Ganoderma Lucidum y G. Zonatum. Produce que los tejidos invadidos se descompongan y aparezcan cavidades más o menos grandes en la base del estipe.',
+	treatment:
+		'Se recomienda la remoción de los tejidos infectados y la aplicación de fungicidas protectores con una pasta cicatrizante. Las plantas afectadas deben destruirse "in situ", al igual que sus raíces.',
+},
+	'DEFICIENCIA DE MAGNESIO': {
+		title: 'Deficiencia  de magnesio',
+		image_relative_route: './assets/images/deficiencia_magnesio.jpg',
+		description:'Se caracteriza por un  amarillamiento de las hojas de la base del tronco. La deficiencia de este elemento es causada por reservas bajas de él en el suelo, por la presencia de un subsuelo muy ácido y por el desbalance entre el magnesio',
+		treatment:'El fertilizante más comúnmente empleado para corregir esta deficiencia es el sulfato de magnesio.'
+	},
+	'PUDRICIÓN DE LOS RACIMOS': {
+		title:'Pudrición de los racimos',
+		image_relative_route: './assets/images/pudricion_racimos.jpg',
+		description:'La pudrición de los frutos y racimos causada por el hongo Marasmius es más frecuente en palmas de 3 a 9 años de edad y bajo condiciones de alta humedad ambiental, como consecuencia de períodos prolongados de lluvias. Los frutos toman una coloración marrón, se vuelven blandos y al final de color negro, con el mesocarpió descompuesto casi en su totalidad.',
+		treatment:'Los racimos infectados deben retirarse de las palmas, así como también los restos de inflorescencias, mediantes podas sanitarias regulares. Cuando sea necesario se realiza la polinización asistida para conseguir un mejor cuajamiento de los frutos, para así disminuir el exceso de humedad ambiental mediante un control de malezas y mejoramientos de las condiciones de drenaje'
+	},
 };
 
 let current_results = {};
