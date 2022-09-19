@@ -370,7 +370,7 @@ const nodes = new vis.DataSet([
 		},
 	},
 	{
-		id: 31 ,
+		id: 31,
 		label: 'Pudrición del cogollo',
 		x: 150,
 		y: 600,
@@ -381,7 +381,7 @@ const nodes = new vis.DataSet([
 		},
 	},
 	{
-		id: 32 ,
+		id: 32,
 		label: 'Moteado',
 		x: 450,
 		y: 600,
@@ -392,7 +392,7 @@ const nodes = new vis.DataSet([
 		},
 	},
 	{
-		id: 33 ,
+		id: 33,
 		label: 'Pudrición Basal del tronco',
 		x: 700,
 		y: 600,
@@ -403,7 +403,7 @@ const nodes = new vis.DataSet([
 		},
 	},
 	{
-		id: 34 ,
+		id: 34,
 		label: 'Añublo Foliar',
 		x: 1050,
 		y: 600,
@@ -414,9 +414,9 @@ const nodes = new vis.DataSet([
 		},
 	},
 	{
-		id: 35 ,
+		id: 35,
 		label: 'Deficiencia del magnesio',
-		x: 1350 ,
+		x: 1350,
 		y: 600,
 		fixed: true,
 		color: {
@@ -425,7 +425,7 @@ const nodes = new vis.DataSet([
 		},
 	},
 	{
-		id: 36 ,
+		id: 36,
 		label: 'Pudrición de los racimos',
 		x: 1600,
 		y: 600,
@@ -434,7 +434,7 @@ const nodes = new vis.DataSet([
 			background: '#97c2fc',
 			border: '#4089EB',
 		},
-	}
+	},
 ]);
 
 const edges = new vis.DataSet([
@@ -469,7 +469,6 @@ const edges = new vis.DataSet([
 	{ from: 29, to: 35, arrows: 'to' },
 	{ from: 30, to: 36, arrows: 'to' },
 	{ from: 31, to: 37, arrows: 'to' },
-	
 ]);
 
 const data = {
