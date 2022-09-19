@@ -153,7 +153,6 @@ const recursivelyEval = (conflictSet) => {
 	possibleEdges.forEach((edge) => {
 		let correct = true; // Flag
 		let existing_conditions = 0;
-		let possible = false;
 
 		const to_node = nodesArr.filter((node) => node.id == edge.to)[0];
 
@@ -165,14 +164,14 @@ const recursivelyEval = (conflictSet) => {
 			for (let i = 0; i < conditions.length; i++) {
 				if (currentNodes.some((node) => node.id === conditions[i].from)) {
 					existing_conditions++;
+				} else {
+					correct = false;
+					break;
 				}
 			}
 
-			// If at least half conditions exist, mark as possible
-			possible = existing_conditions >= Math.ceil(conditions.length / 2) ? true : false;
-
 			// If all conditions are true, add the node to nodes list
-			if (possible && !currentNodes.some((node) => node.id === to_node.id)) {
+			if (correct && !currentNodes.some((node) => node.id === to_node.id)) {
 				to_node.color.background = '#A5E69A'; // Change color
 				to_node.color.border = '#55DF3A'; // Change border
 				currentNodes.push(to_node);
@@ -204,7 +203,6 @@ const updateResults = (conflictSet) => {
 	current_results = [];
 	finals.forEach((final) => current_results.push(possible_results[final.label]));
 
-	const result = possible_results[finals[0].label];
 	//const rTitle = document.querySelector('.result__title');
 	//const rImage = document.querySelector('.result__image');
 	//const rDescription = document.querySelector('.result__description');
